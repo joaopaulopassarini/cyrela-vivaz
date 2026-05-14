@@ -1,0 +1,14 @@
+[data-testid="stSidebar"] {
+    background-color: #1a1a2e;
+}
+[data-testid="stSidebar"] * {
+    color: #e0e0e0 !important;
+}
+div[data-testid="metric-container"] {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 12px;
+}
+.stProgress > div > div {
+    border-radius: 4px;
+}
