@@ -1,300 +1,271 @@
 TEMAS = {
-    "financeiro": {
-        "nome": "Dashboard Financeiro",
-        "descricao": "Fundo escuro, acentos em verde e azul frio. Dados em destaque.",
-        "preview_cores": ["#0a0f1e", "#1a2744", "#00d4aa", "#0099ff", "#ffffff"],
+    "vivaz": {
+        "nome": "Vivaz",
+        "descricao": "Dark editorial. Âmbar sobre preto. Tipografia técnica.",
+        "preview_cores": ["#0a0a0a", "#111111", "#c8902a", "#e8a83a", "#f0ede8"],
         "css": """
-            .stApp { background-color: #0a0f1e !important; }
+            @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap');
+
+            .stApp {
+                background-color: #0a0a0a !important;
+                font-family: 'IBM Plex Mono', monospace !important;
+            }
 
             [data-testid="stSidebar"] {
-                background-color: #070d1a !important;
-                border-right: 1px solid #1e2d4a !important;
+                background-color: #0d0d0d !important;
+                border-right: 1px solid #1e1e1e !important;
             }
-            [data-testid="stSidebar"] * { color: #8899bb !important; }
-
-            h1, h2, h3 {
-                color: #f0f4ff !important;
-                font-weight: 700 !important;
-                letter-spacing: -0.02em !important;
+            [data-testid="stSidebar"] * {
+                color: #5a5550 !important;
+                font-family: 'IBM Plex Mono', monospace !important;
+                font-size: 0.8rem !important;
+                letter-spacing: 0.04em !important;
             }
-            h1 { font-size: 1.8rem !important; }
+            [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p {
+                color: #5a5550 !important;
+            }
+            [data-testid="stSidebar"] .stRadio label[data-checked="true"] {
+                color: #c8902a !important;
+                background: #1a1208 !important;
+                border-left: 2px solid #c8902a !important;
+            }
+            [data-testid="stSidebar"] .stRadio label:hover {
+                background: #141414 !important;
+                color: #a09a90 !important;
+            }
+            [data-testid="stSidebar"] hr {
+                border-color: #1e1e1e !important;
+                margin: 8px 0 !important;
+            }
 
-            p, span, label, div { color: #8899bb !important; }
+            h1 {
+                font-family: 'Bebas Neue', sans-serif !important;
+                font-size: 2rem !important;
+                letter-spacing: 0.1em !important;
+                color: #f0ede8 !important;
+                font-weight: 400 !important;
+                line-height: 1 !important;
+                margin-bottom: 0.5rem !important;
+            }
+            h2 {
+                font-family: 'Bebas Neue', sans-serif !important;
+                font-size: 1.3rem !important;
+                letter-spacing: 0.1em !important;
+                color: #f0ede8 !important;
+                font-weight: 400 !important;
+            }
+            h3 {
+                font-family: 'IBM Plex Mono', monospace !important;
+                font-size: 0.85rem !important;
+                letter-spacing: 0.15em !important;
+                text-transform: uppercase !important;
+                color: #c8902a !important;
+                font-weight: 500 !important;
+            }
+            p, span, label, div {
+                color: #a09a90 !important;
+                font-family: 'IBM Plex Mono', monospace !important;
+                font-size: 0.82rem !important;
+            }
+            [data-testid="stMarkdownContainer"] p {
+                color: #a09a90 !important;
+                line-height: 1.6 !important;
+            }
+            strong, b {
+                color: #f0ede8 !important;
+            }
 
             .stButton > button {
                 background: transparent !important;
-                color: #00d4aa !important;
-                border: 1px solid #00d4aa60 !important;
-                border-radius: 6px !important;
-                font-weight: 600 !important;
-                letter-spacing: 0.02em !important;
-                transition: all 0.2s !important;
+                color: #c8902a !important;
+                border: 1px solid #6b4d1640 !important;
+                border-radius: 2px !important;
+                font-family: 'IBM Plex Mono', monospace !important;
+                font-size: 0.78rem !important;
+                letter-spacing: 0.1em !important;
+                text-transform: uppercase !important;
+                font-weight: 500 !important;
+                transition: all 0.15s !important;
                 box-shadow: none !important;
+                padding: 6px 16px !important;
             }
             .stButton > button:hover {
-                background: #00d4aa15 !important;
-                border-color: #00d4aa !important;
-                color: #00d4aa !important;
+                background: #1a1208 !important;
+                border-color: #c8902a !important;
+                color: #e8a83a !important;
             }
             .stButton > button[kind="primary"] {
-                background: #00d4aa18 !important;
-                border: 1px solid #00d4aa !important;
-                color: #00d4aa !important;
+                background: #1a1208 !important;
+                border: 1px solid #c8902a !important;
+                color: #e8a83a !important;
                 font-weight: 700 !important;
             }
             .stButton > button[kind="primary"]:hover {
-                background: #00d4aa30 !important;
+                background: #261a0a !important;
+                border-color: #e8a83a !important;
             }
 
-            .stSelectbox > div, .stMultiSelect > div, .stTextInput > div > div {
-                background-color: #141f35 !important;
-                border: 1px solid #1e2d4a !important;
-                border-radius: 6px !important;
-                color: #f0f4ff !important;
+            .stSelectbox > div > div,
+            .stMultiSelect > div > div,
+            .stTextInput > div > div,
+            .stTextArea > div > div,
+            .stDateInput > div > div {
+                background-color: #111111 !important;
+                border: 1px solid #222222 !important;
+                border-radius: 2px !important;
+                color: #f0ede8 !important;
+                font-family: 'IBM Plex Mono', monospace !important;
+                font-size: 0.82rem !important;
             }
-
-            .stExpander {
-                background-color: #141f35 !important;
-                border: 1px solid #1e2d4a !important;
-                border-radius: 8px !important;
+            .stSelectbox > div > div:focus-within,
+            .stTextInput > div > div:focus-within,
+            .stTextArea > div > div:focus-within {
+                border-color: #c8902a !important;
+                box-shadow: 0 0 0 1px #c8902a30 !important;
             }
-            .stExpander:hover { border-color: #00d4aa60 !important; }
+            .stSelectbox label,
+            .stTextInput label,
+            .stTextArea label,
+            .stDateInput label,
+            .stCheckbox label,
+            .stRadio label {
+                color: #5a5550 !important;
+                font-size: 0.75rem !important;
+                letter-spacing: 0.1em !important;
+                text-transform: uppercase !important;
+            }
 
             [data-testid="metric-container"] {
-                background: #141f35 !important;
-                border: 1px solid #1e2d4a !important;
-                border-radius: 8px !important;
+                background: #111111 !important;
+                border: 1px solid #1e1e1e !important;
+                border-radius: 2px !important;
                 padding: 16px !important;
-                border-left: 3px solid #00d4aa !important;
+                border-left: 2px solid #c8902a !important;
             }
-
-            .stProgress > div > div {
-                background: linear-gradient(90deg, #00d4aa, #0099ff) !important;
-                border-radius: 4px !important;
+            [data-testid="stMetricValue"] {
+                font-family: 'Bebas Neue', sans-serif !important;
+                font-size: 2.2rem !important;
+                letter-spacing: 0.05em !important;
+                color: #f0ede8 !important;
+                font-weight: 400 !important;
             }
-
-            .stTabs [data-baseweb="tab-list"] {
-                background-color: #0f1729 !important;
-                border-radius: 8px !important;
-                padding: 4px !important;
+            [data-testid="stMetricLabel"] {
+                font-size: 0.7rem !important;
+                letter-spacing: 0.2em !important;
+                text-transform: uppercase !important;
+                color: #5a5550 !important;
             }
-            .stTabs [data-baseweb="tab"] {
-                color: #8899bb !important;
-                border-radius: 6px !important;
-            }
-            .stTabs [aria-selected="true"] {
-                background-color: #00d4aa18 !important;
-                color: #00d4aa !important;
-                font-weight: 700 !important;
-            }
-
-            hr { border-color: #1e2d4a !important; }
-        """,
-    },
-
-    "gestao": {
-        "nome": "Gestão de Projetos",
-        "descricao": "Espaçoso, tipografia forte, acentos em índigo e violeta.",
-        "preview_cores": ["#0f0f23", "#1a1a3e", "#6366f1", "#a855f7", "#ffffff"],
-        "css": """
-            .stApp { background-color: #0f0f23 !important; }
-
-            [data-testid="stSidebar"] {
-                background-color: #0a0a1a !important;
-                border-right: 1px solid #252550 !important;
-            }
-            [data-testid="stSidebar"] * { color: #94a3c8 !important; }
-
-            h1, h2, h3 {
-                color: #f8fafc !important;
-                font-weight: 800 !important;
-                letter-spacing: -0.03em !important;
-                line-height: 1.2 !important;
-            }
-            h1 { font-size: 2rem !important; }
-
-            p, span, label, div { color: #94a3c8 !important; }
-
-            .stButton > button {
-                background: transparent !important;
-                color: #818cf8 !important;
-                border: 1px solid #6366f150 !important;
-                border-radius: 8px !important;
-                font-weight: 600 !important;
-                transition: all 0.2s !important;
-                box-shadow: none !important;
-            }
-            .stButton > button:hover {
-                background: #6366f112 !important;
-                border-color: #6366f1 !important;
-                color: #a5b4fc !important;
-            }
-            .stButton > button[kind="primary"] {
-                background: #6366f115 !important;
-                border: 1px solid #6366f1 !important;
-                color: #a5b4fc !important;
-                font-weight: 700 !important;
-            }
-            .stButton > button[kind="primary"]:hover {
-                background: #6366f130 !important;
-                border-color: #a855f7 !important;
-                color: #c4b5fd !important;
-            }
-
-            .stSelectbox > div, .stMultiSelect > div, .stTextInput > div > div {
-                background-color: #1a1a38 !important;
-                border: 1px solid #252550 !important;
-                border-radius: 8px !important;
-                color: #f8fafc !important;
+            [data-testid="stMetricDelta"] {
+                font-size: 0.75rem !important;
+                font-family: 'IBM Plex Mono', monospace !important;
             }
 
             .stExpander {
-                background-color: #1a1a38 !important;
-                border: 1px solid #252550 !important;
-                border-radius: 12px !important;
-                margin-bottom: 8px !important;
+                background-color: #111111 !important;
+                border: 1px solid #1e1e1e !important;
+                border-radius: 2px !important;
+                margin-bottom: 4px !important;
             }
             .stExpander:hover {
-                border-color: #6366f160 !important;
-                box-shadow: 0 0 0 2px #6366f115 !important;
+                border-color: #c8902a60 !important;
             }
-
-            [data-testid="metric-container"] {
-                background: #1a1a38 !important;
-                border: 1px solid #252550 !important;
-                border-radius: 12px !important;
-                padding: 20px !important;
-                border-top: 3px solid #6366f1 !important;
+            .stExpander summary {
+                font-family: 'IBM Plex Mono', monospace !important;
+                font-size: 0.82rem !important;
+                color: #a09a90 !important;
+                letter-spacing: 0.04em !important;
+            }
+            .stExpander summary:hover {
+                color: #f0ede8 !important;
             }
 
             .stProgress > div > div {
-                background: linear-gradient(90deg, #6366f1, #a855f7) !important;
-                border-radius: 99px !important;
+                background: #c8902a !important;
+                border-radius: 0 !important;
+                height: 3px !important;
+            }
+            .stProgress > div {
+                background: #1e1e1e !important;
+                border-radius: 0 !important;
+                height: 3px !important;
             }
 
             .stTabs [data-baseweb="tab-list"] {
                 background-color: transparent !important;
-                border-bottom: 2px solid #252550 !important;
+                border-bottom: 1px solid #1e1e1e !important;
                 border-radius: 0 !important;
+                gap: 0 !important;
             }
             .stTabs [data-baseweb="tab"] {
-                color: #94a3c8 !important;
-                font-weight: 600 !important;
+                color: #5a5550 !important;
+                font-family: 'IBM Plex Mono', monospace !important;
+                font-size: 0.75rem !important;
+                letter-spacing: 0.12em !important;
+                text-transform: uppercase !important;
+                border-radius: 0 !important;
+                padding: 8px 16px !important;
+                border-bottom: 2px solid transparent !important;
             }
             .stTabs [aria-selected="true"] {
-                color: #818cf8 !important;
+                color: #c8902a !important;
                 background: transparent !important;
-                font-weight: 700 !important;
+                border-bottom: 2px solid #c8902a !important;
+                font-weight: 500 !important;
+            }
+            .stTabs [data-baseweb="tab"]:hover {
+                color: #a09a90 !important;
+                background: #111111 !important;
             }
 
-            hr { border-color: #252550 !important; }
-        """,
-    },
-
-    "enterprise": {
-        "nome": "Enterprise",
-        "descricao": "Sóbrio, denso, acentos em laranja e âmbar. Foco em produtividade.",
-        "preview_cores": ["#0c0c0c", "#161616", "#f97316", "#f59e0b", "#ffffff"],
-        "css": """
-            .stApp { background-color: #0c0c0c !important; }
-
-            [data-testid="stSidebar"] {
-                background-color: #080808 !important;
-                border-right: 1px solid #262626 !important;
+            .stCheckbox [data-testid="stWidgetLabel"] {
+                color: #a09a90 !important;
+                font-size: 0.82rem !important;
             }
-            [data-testid="stSidebar"] * { color: #737373 !important; }
 
-            h1, h2, h3 {
-                color: #fafafa !important;
-                font-weight: 600 !important;
-                font-family: 'SF Mono', 'Consolas', monospace !important;
+            [data-testid="stAlert"] {
+                border-radius: 2px !important;
+                font-family: 'IBM Plex Mono', monospace !important;
+                font-size: 0.8rem !important;
             }
-            h1 {
-                font-size: 1.5rem !important;
+
+            hr {
+                border-color: #1e1e1e !important;
+                margin: 16px 0 !important;
+            }
+
+            .stCaption, [data-testid="stCaptionContainer"] {
+                color: #3a3530 !important;
+                font-size: 0.72rem !important;
+                letter-spacing: 0.05em !important;
+            }
+
+            .stRadio [data-testid="stWidgetLabel"] {
+                color: #5a5550 !important;
+                font-size: 0.72rem !important;
+                letter-spacing: 0.15em !important;
                 text-transform: uppercase !important;
+            }
+
+            .stDownloadButton > button {
+                background: transparent !important;
+                color: #c8902a !important;
+                border: 1px solid #c8902a40 !important;
+                border-radius: 2px !important;
+                font-family: 'IBM Plex Mono', monospace !important;
+                font-size: 0.78rem !important;
                 letter-spacing: 0.1em !important;
             }
-
-            p, span, label, div {
-                color: #a3a3a3 !important;
-                font-size: 0.875rem !important;
+            .stDownloadButton > button:hover {
+                background: #1a1208 !important;
+                border-color: #c8902a !important;
             }
 
-            .stButton > button {
-                background: transparent !important;
-                color: #f97316 !important;
-                border: 1px solid #f9731640 !important;
-                border-radius: 3px !important;
-                font-weight: 600 !important;
-                font-family: monospace !important;
-                letter-spacing: 0.05em !important;
-                transition: all 0.15s !important;
-                box-shadow: none !important;
-            }
-            .stButton > button:hover {
-                background: #f9731615 !important;
-                border-color: #f97316 !important;
-            }
-            .stButton > button[kind="primary"] {
-                background: #f9731615 !important;
-                border: 1px solid #f97316 !important;
-                color: #fb923c !important;
-                font-weight: 700 !important;
-            }
-            .stButton > button[kind="primary"]:hover {
-                background: #f9731630 !important;
-            }
-
-            .stSelectbox > div, .stMultiSelect > div, .stTextInput > div > div {
-                background-color: #161616 !important;
-                border: 1px solid #262626 !important;
-                border-radius: 3px !important;
-                color: #fafafa !important;
-                font-family: monospace !important;
-            }
-
-            .stExpander {
-                background-color: #161616 !important;
-                border: 1px solid #262626 !important;
-                border-radius: 3px !important;
-                margin-bottom: 4px !important;
-            }
-            .stExpander:hover { border-color: #f9731660 !important; }
-
-            [data-testid="metric-container"] {
-                background: #161616 !important;
-                border: 1px solid #262626 !important;
-                border-radius: 3px !important;
-                padding: 12px !important;
-                border-left: 2px solid #f97316 !important;
-            }
-
-            .stProgress > div > div {
-                background: #f97316 !important;
-                border-radius: 0 !important;
-            }
-
-            .stTabs [data-baseweb="tab-list"] {
-                background-color: #111 !important;
-                border: 1px solid #262626 !important;
-                border-radius: 3px !important;
-                padding: 2px !important;
-            }
-            .stTabs [data-baseweb="tab"] {
-                color: #525252 !important;
-                font-family: monospace !important;
-                font-size: 0.8rem !important;
-                letter-spacing: 0.05em !important;
-            }
-            .stTabs [aria-selected="true"] {
-                background-color: #f9731620 !important;
-                color: #f97316 !important;
-                font-weight: 700 !important;
-            }
-
-            hr { border-color: #262626 !important; }
+            ::-webkit-scrollbar { width: 4px; height: 4px; }
+            ::-webkit-scrollbar-track { background: #0a0a0a; }
+            ::-webkit-scrollbar-thumb { background: #1e1e1e; border-radius: 2px; }
+            ::-webkit-scrollbar-thumb:hover { background: #c8902a40; }
         """,
     },
 }
 
-TEMA_PADRAO = "financeiro"
+TEMA_PADRAO = "vivaz"
