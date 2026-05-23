@@ -5,7 +5,7 @@ from core.projeto import carregar_projetos
 
 
 def render():
-    st.title("📋 Painel Diário")
+    st.title("Painel Diário")
 
     projetos = carregar_projetos()
     if not projetos:
@@ -44,23 +44,23 @@ def render():
             elif tarefa["status"] == "Em andamento":
                 em_andamento.append(entrada)
 
-    _secao("🔴 Atrasadas", atrasadas, "#3d1a1a", "#fa5252", "atrasadas")
-    _secao("🟡 Vencendo em 14 dias", vencendo, "#3d3010", "#f59f00", "vencendo")
-    _secao("🔵 Em andamento", em_andamento, "#0f2a3d", "#339af0", "em_andamento")
+    _secao("Atrasadas", atrasadas, "#fa5252", "atrasadas")
+    _secao("Vencendo em 14 dias", vencendo, "#f59f00", "vencendo")
+    _secao("Em andamento", em_andamento, "#339af0", "em_andamento")
 
 
-def _secao(titulo, itens, bg, cor, chave):
+def _secao(titulo, itens, cor_acento, chave):
     total = len(itens)
-    with st.expander(f"{titulo} — {total} tarefa(s)", expanded=(total > 0 and total <= 10)):
+    label = f"{titulo} — {total} tarefa(s)"
+
+    with st.expander(label, expanded=(total > 0 and total <= 10)):
         if not itens:
             st.markdown(
-                f"<div style='color:#666;padding:8px 0;font-size:0.85rem'>"
-                f"Nenhuma tarefa.</div>",
+                "<p style='color:#3a3530; font-size:0.78rem;'>Nenhuma tarefa.</p>",
                 unsafe_allow_html=True,
             )
             return
 
-        # Agrupa por projeto → grupo → subgrupo
         por_projeto = {}
         for item in sorted(itens, key=lambda x: x["data_fim"]):
             p = item["projeto"]
@@ -70,45 +70,72 @@ def _secao(titulo, itens, bg, cor, chave):
 
         for nome_proj, grupos in por_projeto.items():
             st.markdown(
-                f"<div style='font-size:0.8rem;font-weight:700;color:#aaa;"
-                f"text-transform:uppercase;letter-spacing:0.06em;"
-                f"margin:12px 0 6px 0;'>📁 {nome_proj}</div>",
+                f"<p style='color:#f0ede8; font-size:0.85rem; "
+                f"letter-spacing:0.08em; text-transform:uppercase; "
+                f"margin: 12px 0 6px; font-family:IBM Plex Mono,monospace;'>"
+                f"&#9632; {nome_proj}</p>",
                 unsafe_allow_html=True,
             )
 
             for nome_grupo, subgrupos in grupos.items():
-                with st.expander(f"▸ {nome_grupo}", expanded=True):
+                with st.expander(f"{nome_grupo}", expanded=True):
                     for nome_sub, tarefas in subgrupos.items():
                         if nome_sub != "—":
                             st.markdown(
-                                f"<div style='font-size:0.75rem;color:#888;"
-                                f"margin:8px 0 4px 8px;font-weight:600;'>"
-                                f"📂 {nome_sub}</div>",
+                                f"<p style='color:#5a5550; font-size:0.75rem; "
+                                f"letter-spacing:0.1em; text-transform:uppercase; "
+                                f"margin: 8px 0 4px;'>{nome_sub}</p>",
                                 unsafe_allow_html=True,
                             )
 
                         for item in tarefas:
                             dias_diff = (item["data_fim"] - date.today()).days
                             if dias_diff < 0:
-                                prazo_txt = f"<span style='color:#fa5252'>{abs(dias_diff)}d atraso</span>"
+                                prazo_txt = f"{abs(dias_diff)}d atraso"
+                                prazo_cor = "#fa5252"
                             elif dias_diff == 0:
-                                prazo_txt = f"<span style='color:#f59f00'>hoje</span>"
+                                prazo_txt = "hoje"
+                                prazo_cor = "#f59f00"
                             else:
-                                prazo_txt = f"<span style='color:#aaa'>{item['data_fim'].strftime('%d/%m/%Y')}</span>"
+                                prazo_txt = item["data_fim"].strftime("%d/%m/%Y")
+                                prazo_cor = "#5a5550"
+
+                            processo_html = (
+                                f"&nbsp;&nbsp;·&nbsp;&nbsp;"
+                                f"<span style='color:#c8902a;'>{item['numero_processo']}</span>"
+                                if item["numero_processo"] else ""
+                            )
+                            obs_html = (
+                                f"<div style='color:#3a3530; font-size:0.72rem; "
+                                f"margin-top:2px; padding-left:4px; "
+                                f"border-left:1px solid #1e1e1e;'>{item['observacao']}</div>"
+                                if item["observacao"] else ""
+                            )
 
                             st.markdown(
-                                f"<div style='background:{bg};padding:10px 14px;"
-                                f"border-radius:6px;border-left:3px solid {cor};"
-                                f"margin:4px 0 4px 16px;'>"
-                                f"<div style='font-size:0.88rem;font-weight:600;"
-                                f"color:#e0e0e0;margin-bottom:3px'>{item['tarefa']}</div>"
-                                f"<div style='font-size:0.75rem;color:#888'>"
-                                f"👤 {item['responsavel']} &nbsp;·&nbsp; "
-                                f"📅 {prazo_txt} &nbsp;·&nbsp; "
-                                f"{item['status']}"
-                                f"{'&nbsp;·&nbsp; 🔖 ' + item['numero_processo'] if item['numero_processo'] else ''}"
-                                f"</div>"
-                                f"{'<div style=font-size:0.72rem;color:#666;margin-top:3px>' + item['observacao'] + '</div>' if item['observacao'] else ''}"
-                                f"</div>",
+                                f"""
+                                <div style='
+                                    border-left: 2px solid {cor_acento}30;
+                                    padding: 8px 12px;
+                                    margin-bottom: 6px;
+                                    background: #111111;
+                                '>
+                                    <div style='color:#f0ede8; font-size:0.82rem;
+                                                font-family:IBM Plex Mono,monospace;
+                                                margin-bottom:4px;'>
+                                        {item["tarefa"]}
+                                    </div>
+                                    <div style='font-size:0.75rem; color:#5a5550;
+                                                font-family:IBM Plex Mono,monospace;'>
+                                        {item["responsavel"]}
+                                        &nbsp;&nbsp;·&nbsp;&nbsp;
+                                        <span style='color:{prazo_cor};'>{prazo_txt}</span>
+                                        &nbsp;&nbsp;·&nbsp;&nbsp;
+                                        {item["status"]}
+                                        {processo_html}
+                                    </div>
+                                    {obs_html}
+                                </div>
+                                """,
                                 unsafe_allow_html=True,
                             )

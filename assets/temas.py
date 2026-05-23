@@ -62,16 +62,17 @@ TEMAS = {
                 color: #c8902a !important;
                 font-weight: 500 !important;
             }
-            p, span, label, div {
+
+            [data-testid="stMarkdownContainer"] p,
+            [data-testid="stMarkdownContainer"] li,
+            [data-testid="stMarkdownContainer"] span {
                 color: #a09a90 !important;
                 font-family: 'IBM Plex Mono', monospace !important;
                 font-size: 0.82rem !important;
-            }
-            [data-testid="stMarkdownContainer"] p {
-                color: #a09a90 !important;
                 line-height: 1.6 !important;
             }
-            strong, b {
+            [data-testid="stMarkdownContainer"] strong,
+            [data-testid="stMarkdownContainer"] b {
                 color: #f0ede8 !important;
             }
 
@@ -133,6 +134,7 @@ TEMAS = {
                 font-size: 0.75rem !important;
                 letter-spacing: 0.1em !important;
                 text-transform: uppercase !important;
+                font-family: 'IBM Plex Mono', monospace !important;
             }
 
             [data-testid="metric-container"] {
@@ -154,6 +156,7 @@ TEMAS = {
                 letter-spacing: 0.2em !important;
                 text-transform: uppercase !important;
                 color: #5a5550 !important;
+                font-family: 'IBM Plex Mono', monospace !important;
             }
             [data-testid="stMetricDelta"] {
                 font-size: 0.75rem !important;
@@ -169,14 +172,20 @@ TEMAS = {
             .stExpander:hover {
                 border-color: #c8902a60 !important;
             }
-            .stExpander summary {
+            .stExpander details summary {
                 font-family: 'IBM Plex Mono', monospace !important;
                 font-size: 0.82rem !important;
                 color: #a09a90 !important;
                 letter-spacing: 0.04em !important;
+                background: transparent !important;
             }
-            .stExpander summary:hover {
+            .stExpander details summary:hover {
                 color: #f0ede8 !important;
+            }
+            .stExpander details summary p {
+                color: #a09a90 !important;
+                font-family: 'IBM Plex Mono', monospace !important;
+                font-size: 0.82rem !important;
             }
 
             .stProgress > div > div {
@@ -217,11 +226,6 @@ TEMAS = {
                 background: #111111 !important;
             }
 
-            .stCheckbox [data-testid="stWidgetLabel"] {
-                color: #a09a90 !important;
-                font-size: 0.82rem !important;
-            }
-
             [data-testid="stAlert"] {
                 border-radius: 2px !important;
                 font-family: 'IBM Plex Mono', monospace !important;
@@ -237,13 +241,7 @@ TEMAS = {
                 color: #3a3530 !important;
                 font-size: 0.72rem !important;
                 letter-spacing: 0.05em !important;
-            }
-
-            .stRadio [data-testid="stWidgetLabel"] {
-                color: #5a5550 !important;
-                font-size: 0.72rem !important;
-                letter-spacing: 0.15em !important;
-                text-transform: uppercase !important;
+                font-family: 'IBM Plex Mono', monospace !important;
             }
 
             .stDownloadButton > button {
