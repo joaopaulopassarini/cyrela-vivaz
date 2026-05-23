@@ -25,7 +25,10 @@ Regras:
 
 
 def render():
-    st.title("🤖 Copiloto Cyrela")
+    st.markdown(
+        "<h1 style='margin-bottom:0;'>COPILOTO CYRELA</h1>",
+        unsafe_allow_html=True,
+    )
 
     if not OPENAI_API_KEY:
         st.error(
@@ -47,8 +50,8 @@ def render():
                 if t["status"] not in ("Concluído", "Não aplicável")
             ]
             linhas.append(
-                f"- {p['nome']}: {len(tarefas_ativas)} tarefas pendentes, "
-                f"início {p['data_inicio']}"
+                "- " + p["nome"] + ": " + str(len(tarefas_ativas)) + " tarefas pendentes, "
+                "início " + p["data_inicio"]
             )
         contexto_projetos = "Projetos ativos:\n" + "\n".join(linhas)
 
@@ -63,7 +66,7 @@ def render():
 
         system_final = SYSTEM_PROMPT
         if contexto_projetos:
-            system_final += f"\n\n{contexto_projetos}"
+            system_final += "\n\n" + contexto_projetos
 
         historico = [{"role": "system", "content": system_final}]
         historico += [

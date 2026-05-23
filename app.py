@@ -61,24 +61,29 @@ PAGINAS = {
 with st.sidebar:
     st.markdown(
         """
-        <div style="padding: 8px 0 16px;">
+        <div style="padding: 20px 12px 8px; border-bottom: 1px solid #1e1e1e; margin-bottom: 8px;">
             <div style="font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem;
-                        letter-spacing: 0.1em; color: #c8902a; line-height: 1;">
+                        letter-spacing: 0.2em; color: #c8902a; line-height: 1;">
                 CYRELA VIVAZ
             </div>
-            <div style="font-size: 0.7rem; letter-spacing: 0.2em;
-                        color: #3a3530; text-transform: uppercase; margin-top: 4px;">
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem;
+                        letter-spacing: 0.2em; color: #3a3530; text-transform: uppercase;
+                        margin-top: 2px;">
                 Copiloto de Incorporação
             </div>
         </div>
         """,
         unsafe_allow_html=True,
     )
-    st.markdown("---")
     pagina = st.radio("", list(PAGINAS.keys()), label_visibility="collapsed")
-    st.markdown("---")
     st.markdown(
-        "<div style='font-size:0.7rem; color:#3a3530; letter-spacing:0.1em;'>v1.0 · VIVAZ</div>",
+        """
+        <div style="position: fixed; bottom: 16px; left: 0; width: 240px;
+                    padding: 0 16px; font-family: 'IBM Plex Mono', monospace;
+                    font-size: 0.65rem; color: #2a2520; letter-spacing: 0.1em;">
+            v1.0 · VIVAZ
+        </div>
+        """,
         unsafe_allow_html=True,
     )
 
